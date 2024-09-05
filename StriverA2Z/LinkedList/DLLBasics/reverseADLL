@@ -1,0 +1,85 @@
+//Question : https://www.naukri.com/code360/problems/reverse-a-doubly-linked-list_1116098?utm_source=youtube&utm_medium=affiliate&utm_campaign=Codestudio_Linkedlistseries&leftPanelTabValue=PROBLEM
+//code
+//my approach
+Time complexity is O(NlogN) and space complexity is O(1)
+/****************************************************************
+
+ Following is the class structure of the Node class:
+
+ class Node {
+     public int data;
+     public Node next;
+     public Node prev;
+
+     Node()
+     {
+         this.data = 0;
+         this.next = null;
+         this.prev = null;
+     }
+
+     Node(int data)
+     {
+         this.data = data;
+         this.next = null;
+         this.prev = null;
+     }
+
+     Node(int data, Node next)
+     {
+         this.data = data;
+         this.next = next;
+         this.prev = next;
+     }
+ };
+
+ *****************************************************************/
+
+public class Solution
+{
+    public static Node reverseDLL(Node head)
+    {
+        Node start = head;
+        Node end =head;
+        int cnt=1;
+        while(end.next!=null){
+            cnt++;
+            end=end.next;
+        }
+        cnt=cnt/2;
+        while(cnt>0){
+            int temp=start.data;
+            start.data=end.data;
+            end.data=temp;
+            start=start.next;
+            end=end.prev;
+            cnt--;
+        }
+        return head;
+    }
+}
+
+//*************************************************************************************
+//optimal approach
+//Time complexity is O(N) and space complexity is O(1) 
+
+public class Solution
+{
+    public static Node reverseDLL(Node head)
+    {
+       if(head==null || head.next ==null){
+           return head;
+       }
+       Node current=head;
+       Node prevNode=head;
+       while(current!=null){
+            prevNode = current.prev;
+           current.prev=current.next;
+           current.next=prevNode;
+           current=current.prev;
+       }
+       head=prevNode.prev;
+       return head;
+    }
+}
+
