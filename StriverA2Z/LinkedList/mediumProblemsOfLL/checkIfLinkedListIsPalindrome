@@ -1,0 +1,27 @@
+//Question link : https://www.naukri.com/code360/problems/check-if-linked-list-is-palindrome_985248?utm_source=youtube&utm_medium=affiliate&utm_campaign=Codestudio_Linkedlistseries&leftPanelTabValue=PROBLEM
+//Brute force approach
+//code 
+//Time complexity is O(2N) as we are iterating same list twice.
+//Space complexity is O(N) as we are storing all nodes in a stack.
+import java.util.Stack;
+
+public class Solution {
+    public static boolean isPalindrome(Node head) {
+       Stack<Node> ss= new Stack<>();
+       Node temp=head;
+       while(temp!=null){
+           ss.push(temp);
+           temp=temp.next;
+       }
+       temp=head;
+       while(temp!=null){
+           Node ssNode=ss.pop();
+           if(temp.data!=ssNode.data){
+               return false;
+           }
+           temp=temp.next;
+       }
+       return true;
+        
+    }
+}
