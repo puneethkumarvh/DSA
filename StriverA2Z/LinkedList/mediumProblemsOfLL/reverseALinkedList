@@ -26,3 +26,45 @@ public class Solution
 
     }
 }
+
+//Optimal solution 1
+//time complexity O(N)
+//Space complexity - no extra space.
+//code
+public class Solution
+{
+    public static Node reverseLinkedList(Node head)
+    {
+        Node temp=head;
+        Node prev=null;
+        while(temp!=null){
+            Node front = temp.next;
+            temp.next=prev;
+            prev=temp;
+            temp=front; 
+        }
+        return prev;
+        
+    }
+}
+
+
+//Optimal solution 2 using recursion 
+//time complexity is O(N) as we are iterating the list once.
+//Space complexity is O(N) recursive stack space
+//code 
+public class Solution
+{
+    public static Node reverseLinkedList(Node head)
+    {
+        if(head == null || head.next==null){
+            return head;
+        }
+        Node newHead=reverseLinkedList(head.next);
+        Node front = head.next;
+        front.next=head;
+        head.next=null;
+        return newHead;
+    }
+}
+
