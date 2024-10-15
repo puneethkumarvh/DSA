@@ -1,0 +1,28 @@
+//Question link : https://www.naukri.com/code360/problems/reverse-linked-list_920513?utm_source=youtube&utm_medium=affiliate&utm_campaign=Codestudio_Linkedlistseries&leftPanelTabValue=SUBMISSION
+//Using stack 
+//Time complexity is O(2N) as we iterate the list twice. 
+//Space complexity is O(N) --stack space. 
+import java.util.*;
+public class Solution
+{
+    public static Node reverseLinkedList(Node head)
+    {
+        Stack<Node> ss=new Stack<>();
+        while(head!=null){
+            ss.push(head);
+            head=head.next;
+        }
+        if(ss.isEmpty()){
+            return null;
+        }
+        Node temp=ss.pop();
+        head=temp;
+        while(!(ss.isEmpty())){
+             temp.next=ss.pop();
+             temp=temp.next;
+        }
+        temp.next=null;
+        return head;
+
+    }
+}
