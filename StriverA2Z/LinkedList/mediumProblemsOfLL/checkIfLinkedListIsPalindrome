@@ -25,3 +25,46 @@ public class Solution {
         
     }
 }
+
+
+//Optimal solution - time complexity O(2N) ,space complexity - NA
+//code 
+public class Solution {
+    public static boolean isPalindrome(Node head) {
+        //find middle node using hare and tortoise method
+        Node hare=head;
+        Node tortoise= head;
+        //O(N/2) for finding middle node
+        while(hare.next!=null && hare.next.next!=null){
+            hare=hare.next.next;
+            tortoise=tortoise.next;
+        }
+        Node newHead=reverseLinkedList(tortoise.next);
+        Node first=head;
+        Node last=newHead;
+        //traversal of this loop takes O(N/2) time complexity.
+        while(last!=null){
+            if(first.data!=last.data){
+                reverseLinkedList(newHead); //Reverse again takes O(N/2) time
+                return false;
+            }
+            last=last.next;
+            first=first.next;
+        }
+        reverseLinkedList(newHead); //Reverse again takes O(N/2) time
+        return true;
+    }
+    
+    //Takes O(N/2)time to reverse a given linkedlist.
+    public static Node reverseLinkedList(Node head){
+        Node prev=null;
+        Node temp=head;
+        while(temp!=null){
+            Node front = temp.next;
+            temp.next=prev;
+            prev=temp;
+            temp=front;
+        }
+        return prev;
+    }
+}
