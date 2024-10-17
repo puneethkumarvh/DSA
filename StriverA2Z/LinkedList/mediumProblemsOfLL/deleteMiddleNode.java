@@ -27,3 +27,22 @@ public class Solution {
         return head;
     }
 }
+
+//optimal solution without using extra variable. Time and space complexity remains same as above.
+//code 
+public class Solution {
+    public static Node deleteMiddle(Node head) {
+        Node slow=head;
+        Node fast=head;
+        if(head.next==null ){
+            return null;
+        }
+        fast=fast.next.next;
+        while(fast!=null && fast.next!=null){
+            slow=slow.next;
+            fast=fast.next.next;
+        }
+        slow.next=slow.next.next;
+        return head;
+    }
+}
