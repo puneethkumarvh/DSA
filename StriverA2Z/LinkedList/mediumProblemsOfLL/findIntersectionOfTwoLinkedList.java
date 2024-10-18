@@ -18,7 +18,6 @@ public class Solution {
             if(mpp.containsKey(second)){
                 return second.data;
             }
-            mpp.put(second,mpp.getOrDefault(second,0)+1);
             second=second.next;
         }
         return 0;
