@@ -1,5 +1,6 @@
 //Question link :https://www.naukri.com/code360/problems/add-two-numbers_1170520?utm_source=youtube&utm_medium=affiliate&utm_campaign=Codestudio_Linkedlistseries&leftPanelTabValue=PROBLEM
 //Time complexity : O(N+M), Space complexity is O(1).
+//my solution - a lot of code duplication.
 //code
 import java.util.* ;
 
