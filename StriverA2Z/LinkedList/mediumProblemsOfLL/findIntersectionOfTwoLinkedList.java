@@ -23,3 +23,26 @@ public class Solution {
         return 0;
     }
 }
+
+//optimal solution
+//Time Complexity: O(2*max(length of list1,length of list2)) as we are iterating same link twice .
+public class Solution {
+    public static int findIntersection(Node firstHead, Node secondHead) {
+        Node d1=firstHead;
+        Node d2 = secondHead;
+        while(d1!=d2){
+            if(d1==null){
+                d1=secondHead;
+            }else{
+                d1=d1.next;
+            }
+            if(d2==null){
+                d2=firstHead;
+            }else{
+                d2=d2.next;
+            }
+        }
+        return d1.data;
+
+    }
+}
