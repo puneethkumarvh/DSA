@@ -1,5 +1,5 @@
 //Question link : https://www.naukri.com/code360/problems/add-one-to-a-number-represented-as-linked-list_920557?utm_source=youtube&utm_medium=affiliate&utm_campaign=Codestudio_Linkedlistseries&leftPanelTabValue=PROBLEM
-//Time complexity is O(N) to reverse a list + O(N+1) in worst case if we add 1 more node + O(N) to reverse again.
+//Time complexity is O(N) to reverse a list + O(N+1) in worst case if we add 1 more node + O(N) to reverse again ~ O(3N).
 //Space complexity is O(1) 
 //code 
 public class Solution {
@@ -42,5 +42,33 @@ public class Solution {
 			}
 		}
 		return reverseList(tempHead);
+	}
+}
+
+//recursive solution 
+//code 
+public class Solution {
+	public static int addNum(Node temp){
+		if(temp==null){
+			return 1;
+		}
+		int carry=addNum(temp.next);
+		temp.data=temp.data+carry;
+		if(temp.data==10){
+			temp.data=0;
+			return 1;
+		}else{
+			return 0;
+		}
+
+	}
+	public static Node addOne(Node head) {
+		int carry=addNum(head);
+		if(carry==1){
+			Node first=new Node(1);
+			first.next=head;
+			return first;
+		}
+		return head;
 	}
 }
