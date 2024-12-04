@@ -16,3 +16,25 @@ class Solution {
         return j == str2.length();
     }
 }
+
+//ruby code 
+# @param {String} str1
+# @param {String} str2
+# @return {Boolean}
+def can_make_subsequence(str1, str2)
+    i = 0
+    j=0
+    while(i<str1.length && j< str2.length) 
+        ch = str1[i]
+        next_ch= ch.next[0]
+        if(ch == str2[j] || next_ch == str2[j])
+            j=j+1
+        end 
+        i=i+1
+    end
+    if j==str2.length 
+        return true 
+    else 
+        return false 
+    end  
+end
