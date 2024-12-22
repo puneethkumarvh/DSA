@@ -59,3 +59,24 @@ class Solution {
         return result;
     }
 }
+
+//some reduction in code 
+class Solution {
+    public int[] nextGreaterElement(int[] nums1, int[] nums2) {
+                                           
+     HashMap<Integer,Integer> mpp=new HashMap<>();
+     Stack<Integer> st= new Stack<>();
+     for(int i=0;i<nums2.length;i++){
+        while(st.isEmpty()==false && st.peek()<=nums2[i]){
+            mpp.put(st.pop(),nums2[i]);
+        }
+        st.add(nums2[i]);
+     }
+     int ans[]=new int[nums1.length];
+     for(int j=0;j<nums1.length;j++){
+        ans[j]=mpp.getOrDefault(nums1[j],-1);
+     }
+     return ans;
+        
+    }
+}
