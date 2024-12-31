@@ -1,7 +1,7 @@
 //Leetcode : 136 . 
 //Using HashMap.
 //Time complexity : O(2N) 
-//Space complexity : O(N/2) 
+//Space complexity : O(N/2+1) as all numbers repeat twice except one 
 //code 
 import java.util.*;
 class Solution {
