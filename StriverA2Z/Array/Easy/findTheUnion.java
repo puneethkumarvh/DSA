@@ -19,3 +19,45 @@ public class Solution {
         return arr;
     }
 }
+
+//Solution 2: Time complexity : O(n+m) ,Space complexity : O(1) as no extra storage is used,arraylist is used to get return the answer but not solve it.
+//code 
+import java.util.*;
+public class Solution {
+    public static List< Integer > sortedArray(int []a, int []b) {
+        int n=a.length;
+        int m=b.length;
+        ArrayList<Integer> arr=new ArrayList<>();
+        int i=0;
+        int j=0;
+        while(i<n && j < m){
+            if(a[i]<=b[j]){
+                if(arr.isEmpty() || (arr.get(arr.size()-1)!=a[i]) ){
+                    arr.add(a[i]);
+                }
+                i++;
+                
+            }else{
+                if(arr.isEmpty() || (arr.get(arr.size()-1)!=b[j]) ){
+                    arr.add(b[j]);
+                }
+                j++;
+
+            }
+        }
+        while(i<n){
+            if(arr.isEmpty() || (arr.get(arr.size()-1)!=a[i]) ){
+                    arr.add(a[i]);
+                }
+                i++;
+        }
+        while(j<m){
+            if(arr.isEmpty() || (arr.get(arr.size()-1)!=b[j]) ){
+                    arr.add(b[j]);
+                }
+                j++;
+        }
+
+        return arr;
+    }
+}
