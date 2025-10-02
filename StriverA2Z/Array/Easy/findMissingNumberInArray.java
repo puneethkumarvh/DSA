@@ -1,6 +1,9 @@
 //Question link : https://leetcode.com/problems/missing-number/
+//Problem: Given an array nums containing n distinct numbers in the range [0, n], 
+//return the only number in the range that is missing from the array.
 //Time complexity: O(N) 
 //Space complexity : O(N)
+//Approach: Use HashSet to store all numbers, then iterate through [0,n] to find missing number
 //code 
 class Solution {
     public int missingNumber(int[] nums) {
