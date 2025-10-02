@@ -23,16 +23,20 @@ class Solution {
 
 //Optimal solution 1: Using XOR function. 
 //code- Time complexity is O(N) space complexity is O(1).
+//XOR approach explanation: XOR has the property that a^a = 0 and a^0 = a
+//We XOR all numbers from 0 to n (including n) with all numbers in the array
+//Since all numbers except the missing one appear twice, they cancel out (a^a=0)
+//Only the missing number remains as it appears only once
 class Solution {
     public int missingNumber(int[] nums) {
-        int xor1=0;
-        int xor2=0;
+        int xor1=0; // Will store XOR of all numbers from 0 to n
+        int xor2=0; // Will store XOR of all numbers in the array
         for(int i=0;i<nums.length;i++){
-            xor1=xor1^i;
-            xor2=xor2^nums[i];
+            xor1=xor1^i;        // XOR with numbers 0 to n-1
+            xor2=xor2^nums[i];  // XOR with array elements
         }
-        xor1=xor1^nums.length;
-        return xor1 ^ xor2;
+        xor1=xor1^nums.length;  // XOR with n (the last number in range [0,n])
+        return xor1 ^ xor2;     // XOR the two results to get missing number
         
     }
 }
